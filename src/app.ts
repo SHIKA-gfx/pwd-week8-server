@@ -1,5 +1,6 @@
 import express, { type Express } from "express";
 import cors from "cors";
+import restaurantsRouter from "./routes/restaurants.routes";
 import createAuthRouter from "./routes/auth.routes";
 import notFound from "./middleware/notFound.middleware";
 import errorHandler from "./middleware/error.middleware";
@@ -24,6 +25,7 @@ export default function createApp(): Express {
     res.json({ status: "ok" });
   });
   app.use("/api/auth", createAuthRouter());
+  app.use("/api/restaurants", restaurantsRouter);
   app.use(notFound);
   app.use(errorHandler);
   return app;
