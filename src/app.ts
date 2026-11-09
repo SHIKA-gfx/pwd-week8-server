@@ -1,6 +1,7 @@
 import express, { type Express } from "express";
 import cors from "cors";
 import restaurantsRouter from "./routes/restaurants.routes";
+import submissionsRouter from "./routes/submissions.routes";
 import usersRouter from "./routes/users.routes";
 import createAuthRouter from "./routes/auth.routes";
 import notFound from "./middleware/notFound.middleware";
@@ -28,6 +29,7 @@ export default function createApp(): Express {
   app.use("/api/auth", createAuthRouter());
   app.use("/api/users", usersRouter);
   app.use("/api/restaurants", restaurantsRouter);
+  app.use("/api/submissions", submissionsRouter);
   app.use(notFound);
   app.use(errorHandler);
   return app;
